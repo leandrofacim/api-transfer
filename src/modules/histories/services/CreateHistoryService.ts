@@ -18,10 +18,10 @@ class CreateHistoryService {
     total_before,
     type,
     user_id_transfer,
-  }: IRequest): Promise<void> {
-    const usersRepository = getRepository(History);
+  }: IRequest): Promise<History> {
+    const historyRepository = getRepository(History);
 
-    await usersRepository.save({
+    const history = historyRepository.create({
       user_id,
       type,
       amount,
@@ -30,7 +30,9 @@ class CreateHistoryService {
       user_id_transfer,
     });
 
-    return;
+    await historyRepository.save(history);
+
+    return history;
   }
 }
 
