@@ -1,9 +1,9 @@
 import CreateHistoryService from '@modules/histories/services/CreateHistoryService';
 import AppError from '@shared/errors/AppError';
 import { mountRequest } from '@shared/http/helpers/common-methods';
-import { getConnection, getCustomRepository, getRepository } from 'typeorm';
+import { getConnection, getRepository } from 'typeorm';
 import Wallet from '../../wallets/typeorm/entities/Wallet';
-import UsersRepository from '../typeorm/repositories/UsersRepository';
+import User from '../typeorm/entities/User';
 
 interface IRequest {
   value: number;
@@ -13,7 +13,7 @@ interface IRequest {
 
 class CreateTransferService {
   public async execute({ value, userId, payee }: IRequest): Promise<boolean> {
-    const usersRepository = getCustomRepository(UsersRepository);
+    const usersRepository = getRepository(User);
     const walletRepository = getRepository(Wallet);
 
     try {
