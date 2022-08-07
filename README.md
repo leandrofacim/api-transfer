@@ -20,6 +20,10 @@ Entre no diretório do projeto
   cd api-transfer
 ```
 
+```bash
+  Crie um arquivo `.env` a partir do `.env.example`. 
+```
+
 Inicie o servidor
 
 ```bash
