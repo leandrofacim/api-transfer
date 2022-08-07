@@ -1,6 +1,6 @@
 # API Transfer
 
-Com essa API é possivel realizar transferências de valor entre usuários
+Essa API tem como objetivo realizar transações de saldo entre contas usuários
 
 ## Stack utilizada
 
