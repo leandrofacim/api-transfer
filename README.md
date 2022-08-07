@@ -4,7 +4,7 @@ Essa API tem como objetivo realizar transações de saldo entre contas usuários
 
 ## Stack utilizada
 
-**Back-end:** Node, Express, Postgres, Swagger, Jest
+**Back-end:** Node, Express, Typeorm, Postgres, Swagger, Jest
 
 ## Rodando localmente
 
