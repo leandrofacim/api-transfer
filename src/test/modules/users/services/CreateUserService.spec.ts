@@ -6,12 +6,14 @@ import {
   SelectQueryBuilder,
 } from 'typeorm';
 import { mock } from 'jest-mock-extended';
+import { faker } from '@faker-js/faker';
 
 const mockCreateUser = {
-  name: 'John Doe',
-  email: 'john@hotmail.com',
-  password: '123456',
-  cpf: '12345678901',
+  id: faker.datatype.uuid(),
+  name: faker.name.firstName(),
+  email: faker.internet.email(),
+  password: faker.internet.password(),
+  cpf: faker.datatype.uuid(),
   type: 'common',
   cnpj: '',
 };
@@ -46,9 +48,12 @@ describe('CreateUserService', () => {
 
     const service = new CreateUserService();
 
+    repositoryMock.create.mockResolvedValue(mockCreateUser);
     repositoryMock.save.mockResolvedValue(mockCreateUser);
 
     const user = await service.execute(mockCreateUser);
+
+    repositoryMock.create.mockResolvedValue(mockCreateUser.id);
 
     expect(user).toBeTruthy();
     expect(user).toEqual(mockCreateUser);
